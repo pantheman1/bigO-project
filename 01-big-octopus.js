@@ -1,16 +1,40 @@
 function quadraticBiggestFish(fishes) {
-  // Code goes here ...
-}
+  let bigFish;
 
+  for (let i = 0; i < fishes.length; i++) {
+    let fishA = fishes[i];
+    for (let j = i + 1; j < fishes.length; j++) {
+      let fishB = fishes[j];
+      if (fishA.length > fishB.length) {
+        bigFish = fishA;
+      } else {
+        bigFish = fishB;
+      }
+    }
+  }
+  return bigFish;
+}
+const fishies = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish',
+  'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh'];
+// console.log(quadraticBiggestFish(fishies))
 
 function nlognBiggestFish(fishes) {
-  // Code goes here ...
+  fishes.sort(function(fishA, fishB) {
+    return fishA.length - fishB.length;
+  })
+  return fishes[fishes.length - 1]
 }
 
+console.log(nlognBiggestFish(fishies))
 
 function linearBiggestFish(fishes) {
-  // Code goes here ...
+  let bigFish = fishes.reduce((acc, el) => {
+    acc.length < el.length
+      return el;
+  })
+  return bigFish;
 }
+// console.log(linearBiggestFish(fishies))
 
 
 tilesArray = ["up", "right-up", "right", "right-down", "down", "left-down", "left", "left-up"]
