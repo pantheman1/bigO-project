@@ -41,38 +41,62 @@ function secondAnagram(str1, str2) {
 function thirdAnagram(str1, str2) {
   let str1Obj = {};
   let str2Obj = {};
-  for (let i=0; i< str1.length; i++){
-    if(str1Obj[str1[i]]){
+  for (let i = 0; i < str1.length; i++) {
+    if (str1Obj[str1[i]]) {
       str1Obj[str1[i]]++
-    }else{
-      str1Obj[str1[i]]=1
+    } else {
+      str1Obj[str1[i]] = 1
     }
   }
-  for (let i=0; i< str2.length; i++){
-    if(str2Obj[str2[i]]){
+  for (let i = 0; i < str2.length; i++) {
+    if (str2Obj[str2[i]]) {
       str2Obj[str2[i]]++
-    }else{
-      str2Obj[str2[i]]=1
+    } else {
+      str2Obj[str2[i]] = 1
     }
 
   }
-  
-  
-  for (const key in str1Obj){
-    
-    if (str1Obj[key] !== str2Obj[key]){
+
+
+  for (const key in str1Obj) {
+
+    if (str1Obj[key] !== str2Obj[key]) {
       return false
     }
-   
+
   }
 
   return true
 
 }
-console.log(thirdAnagram("gizmo", "sally"));    // => false
-console.log(thirdAnagram("elvis", "lives"))    // => true
-console.log(thirdAnagram("elviss", "lives"))    // => false
+// console.log(thirdAnagram("gizmo", "sally"));    // => false
+// console.log(thirdAnagram("elvis", "lives"))    // => true
+// console.log(thirdAnagram("elviss", "lives"))    // => false
 
 function fourthAnagram(str1, str2) {
-  // Code goes here ....
+  let obj = {};
+  for (let i = 0; i < str1.length; i++) {
+    if (obj[`${str1[i]}1`]) {
+      obj[`${str1[i]}1`]++
+    } else {
+      obj[`${str1[i]}1`] = 1
+    }
+  }
+  for (let i = 0; i < str2.length; i++) {
+    if (obj[`${str2[i]}2`]) {
+      obj[`${str2[i]}2`]++
+    } else {
+      obj[`${str2[i]}2`] = 1
+    }
+  } 
+
+  for (const key in obj) {
+    if (obj[key[0]+"1"] !== obj[key[0]+"2"]) {
+      return false;
+    }
+  }
+  return true;
 }
+console.log(fourthAnagram("gizmo", "sally"));    // => false
+console.log(fourthAnagram("elvis", "lives"))    // => true
+console.log(fourthAnagram("elviss", "lives"))    // => false
