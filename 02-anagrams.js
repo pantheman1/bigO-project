@@ -34,14 +34,44 @@ function secondAnagram(str1, str2) {
   }
 }
 
-console.log(secondAnagram("gizmo", "sally"));    // => false
-console.log(secondAnagram("elvis", "lives"))    // => true
-console.log(secondAnagram("elviss", "lives"))    // => false
+// console.log(secondAnagram("gizmo", "sally"));    // => false
+// console.log(secondAnagram("elvis", "lives"))    // => true
+// console.log(secondAnagram("elviss", "lives"))    // => false
 
 function thirdAnagram(str1, str2) {
-  // Code goes here ....
-}
+  let str1Obj = {};
+  let str2Obj = {};
+  for (let i=0; i< str1.length; i++){
+    if(str1Obj[str1[i]]){
+      str1Obj[str1[i]]++
+    }else{
+      str1Obj[str1[i]]=1
+    }
+  }
+  for (let i=0; i< str2.length; i++){
+    if(str2Obj[str2[i]]){
+      str2Obj[str2[i]]++
+    }else{
+      str2Obj[str2[i]]=1
+    }
 
+  }
+  
+  
+  for (const key in str1Obj){
+    
+    if (str1Obj[key] !== str2Obj[key]){
+      return false
+    }
+   
+  }
+
+  return true
+
+}
+console.log(thirdAnagram("gizmo", "sally"));    // => false
+console.log(thirdAnagram("elvis", "lives"))    // => true
+console.log(thirdAnagram("elviss", "lives"))    // => false
 
 function fourthAnagram(str1, str2) {
   // Code goes here ....
